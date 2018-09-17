@@ -6,8 +6,11 @@ from bs4 import BeautifulSoup
 
 i = 0 # Image counter
 def get_extension(img_url):
+    formats = ['.jpg', '.jpeg', '.tiff', '.gif', '.svg']
     path = urlparse(img_url).path
     ext = os.path.splitext(path)[1]
+    if not ext in formats:
+        return '.jpg' 
     return ext
 
 def save_image(url, img_url, name):
@@ -24,6 +27,8 @@ def save_image(url, img_url, name):
         print('Image ' + img_url + ' not found')
     except ConnectionResetError:
         print('Connection interrupted')
+    except urllib.error.URLError:
+        print('Operation timed out')
 
     f.close()    
 
@@ -35,11 +40,7 @@ def main():
     if not os.path.isdir('img'):
         os.mkdir('img')
 
-    imgs = soup.findAll('img', {'src': True})
     name = input('Name to save image: ')
-    for img in imgs:
-        img_url = img['src']
-        save_image(url, img_url, name)
 
     # Find images in links
     links = soup.findAll('a', {'href': True})
@@ -48,5 +49,11 @@ def main():
             img_url = link['href']
             save_image(url, img_url, name)
 
+    imgs = soup.findAll('img', {'src': True})
+    for img in imgs:
+        img_url = img['src']
+        save_image(url, img_url, name)
+
+    
 if __name__ == '__main__':
     main()
