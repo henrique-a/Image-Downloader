@@ -1,5 +1,4 @@
 import os
-import requests
 import urllib
 from bs4 import BeautifulSoup
 import dryscrape
@@ -59,7 +58,6 @@ def main():
     # Find images in <img> tags
     imgs = soup.findAll('img', {'src': True})
     for img in imgs:
-        print(img)
         img_url = img['src']
         save_image(url, img_url, name)
     
