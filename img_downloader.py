@@ -6,12 +6,7 @@ from bs4 import BeautifulSoup
 
 i = 0 # Image counter
 def get_extension(img_url):
-    formats = ['.jpg', '.jpeg', '.tiff', '.gif', '.svg']
-    path = urlparse(img_url).path
-    ext = os.path.splitext(path)[1]
-    if not ext in formats:
-        return '.jpg' 
-    return ext
+    return '.' + img_url.split('.')[-1]
 
 def save_image(url, img_url, name):
     if not img_url.startswith('http'):
@@ -49,6 +44,7 @@ def main():
             img_url = link['href']
             save_image(url, img_url, name)
 
+    # Find images in <img> tags
     imgs = soup.findAll('img', {'src': True})
     for img in imgs:
         img_url = img['src']
