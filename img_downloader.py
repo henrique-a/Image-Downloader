@@ -1,5 +1,6 @@
 import os
 import urllib
+import urllib.request
 from bs4 import BeautifulSoup
 import dryscrape
 
@@ -39,14 +40,14 @@ def save_image(url, img_url, name):
 
 def main():
     url = input('URL: ')
+    name = input('Name to save images: ')
+
     session = dryscrape.Session()
     session.visit(url)
     response = session.body()
     soup = BeautifulSoup(response, "html.parser")
     if not os.path.isdir('img'):
         os.mkdir('img')
-
-    name = input('Name to save image: ')
 
     # Find images in links
     links = soup.findAll('a', {'href': True})
