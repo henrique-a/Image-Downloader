@@ -1,7 +1,7 @@
 # Image-Downloader
+Python script to download images of a web page
 
 ## Dependences
- - urllib
  - bs4
  - dryscrape
  - PythonWebKit
