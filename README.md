@@ -12,4 +12,5 @@ After cloning/downloading the repository, install required packages:
 Install PythonWebKit:
 ```
 sudo apt-get update
-sudo apt-get install python-webkit```
+sudo apt-get install python-webkit
+```
