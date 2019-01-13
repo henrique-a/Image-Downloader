@@ -7,7 +7,9 @@ Python script to download images of a web page
  - python-webkit
  
 After cloning/downloading the repository, install required packages:
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 Install PythonWebKit:
 ```
