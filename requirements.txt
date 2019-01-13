@@ -1,0 +1,3 @@
+beautifulsoup4==4.6.3
+dryscrape==1.0
+webkit-server==1.0
