@@ -1,7 +1,7 @@
 # Image-Downloader
 
 ## About
-This is a python script to download all images and image links of a web page.
+This is a python web crawler to download all images and image links of a web page.
 
 ## Dependencies
  - beautifulsoup4
